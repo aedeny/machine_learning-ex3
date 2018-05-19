@@ -1,7 +1,25 @@
 # Machine Learning - Exercise 3
 A Neural Network which classifies an image to one of 10 clothing classes.
 
-**Output:**  
+## Explanation
+###Parameters:
+* Hidden layer(s): One layer of 100 neurons.
+* Number of epochs: 10.
+* Learning rate: 0.001.
+* Activation function: LeakyReLU.
+* `W` and `B` matrices were initialized with random numbers from a uniform distribution function in the range of `(-0
+.08, 0.08)`.
+
+###Results:
+* Validation accuracy: 0.870
+* Loss Sum: 0.338
+* Validation Loss Sum: 0.352
+
+I've chosen these parameters after experimenting with different parameters and found these to be the best.
+
+## Example Output  
+Note: Output can vary from each training.
+
 `Reading resources...  `  
 `Reading done!`  
 `Pre-trained neural network was not found. Creating a new network.`    
