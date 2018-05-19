@@ -187,21 +187,35 @@ def read_resources(train_x, train_y, test):
 
 
 if __name__ == '__main__':
-    file_path = "my_neural_network.pickle"
+    file_path = "my_neural_network.pkl"
+
     # Reads data
+    print("Reading resources...")
     x, y, test = read_resources("train_x", "train_y", "test_x")
+    print("Reading done!")
 
     nn = None
     if os.path.exists(file_path):
+        print("Loading pre-trained neural network from \"" + file_path + "\"...")
         with open(file_path, 'rb') as f:
             nn = pickle.load(f)
+        print("Loading done!")
     else:
+        print("Pre-trained neural network was not found. Creating a new network.")
         nn = NeuralNetwork(x, y, 100, 0.8)
+
+        print("Training neural network...")
         nn.train(10, 0.001)
+        print("Training done!")
+
+        print("Saving neural network to file \"" + file_path + "\" for later use...")
         with open(file_path, 'wb') as f:
             pickle.dump(nn, f)
+        print("Saving done!")
 
     # Writes predictions of given tests
+    print("Predicting samples from tests file and writes predictions to output file...")
     with open("test.pred", "w") as f:
         for t in test:
             f.write(str(nn.predict(t)) + '\n')
+    print("Testing done!")
